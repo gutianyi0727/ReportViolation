@@ -1,0 +1,36 @@
+{
+    "logs": [
+        {
+            "outputFile": "D:\\cps\\androidTaskProject\\seniorProject\\reportParkingViolation\\ocr_ui\\build\\intermediates\\res\\merged\\release\\values-hdpi-v4\\values-hdpi-v4.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\Elvis\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-25.1.1.aar\\5a70f7ed7ebdd478b8143268804f1664\\res\\values-hdpi-v4\\values-hdpi-v4.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endLines": "6",
+                        "endColumns": "13",
+                        "endOffsets": "327"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "D:\\cps\\androidTaskProject\\seniorProject\\reportParkingViolation\\ocr_ui\\build\\intermediates\\incremental\\mergeReleaseResources\\merged.dir\\values-hdpi-v4\\values-hdpi-v4.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\Elvis\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-25.1.1.aar\\5a70f7ed7ebdd478b8143268804f1664\\res\\values-hdpi-v4\\values-hdpi-v4.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endLines": "6",
+                        "endColumns": "13",
+                        "endOffsets": "327"
+                    }
+                }
+            ]
+        }
+    ]
+}

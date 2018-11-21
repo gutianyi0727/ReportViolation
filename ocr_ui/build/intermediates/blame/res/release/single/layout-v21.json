@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "D:\\cps\\androidTaskProject\\seniorProject\\reportParkingViolation\\ocr_ui\\build\\intermediates\\res\\merged\\release\\layout-v21\\notification_template_custom_big.xml",
+        "source": "C:\\Users\\Elvis\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-25.1.1.aar\\5a70f7ed7ebdd478b8143268804f1664\\res\\layout-v21\\notification_template_custom_big.xml"
+    },
+    {
+        "merged": "D:\\cps\\androidTaskProject\\seniorProject\\reportParkingViolation\\ocr_ui\\build\\intermediates\\res\\merged\\release\\layout-v21\\notification_template_icon_group.xml",
+        "source": "C:\\Users\\Elvis\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-25.1.1.aar\\5a70f7ed7ebdd478b8143268804f1664\\res\\layout-v21\\notification_template_icon_group.xml"
+    },
+    {
+        "merged": "D:\\cps\\androidTaskProject\\seniorProject\\reportParkingViolation\\ocr_ui\\build\\intermediates\\res\\merged\\release\\layout-v21\\notification_action_tombstone.xml",
+        "source": "C:\\Users\\Elvis\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-25.1.1.aar\\5a70f7ed7ebdd478b8143268804f1664\\res\\layout-v21\\notification_action_tombstone.xml"
+    },
+    {
+        "merged": "D:\\cps\\androidTaskProject\\seniorProject\\reportParkingViolation\\ocr_ui\\build\\intermediates\\res\\merged\\release\\layout-v21\\notification_action.xml",
+        "source": "C:\\Users\\Elvis\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-25.1.1.aar\\5a70f7ed7ebdd478b8143268804f1664\\res\\layout-v21\\notification_action.xml"
+    }
+]

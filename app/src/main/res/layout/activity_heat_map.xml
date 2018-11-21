@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HeatMap">
+
+    <RelativeLayout
+        android:id="@+id/heat_map_title"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#ffffff">
+
+
+        <ImageButton
+            android:id="@+id/heat_map_back_user_info"
+            android:layout_width="10dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="12dp"
+            android:layout_centerVertical="true"
+            android:background="@mipmap/last_step"
+            android:layout_marginLeft="12dp" />
+
+
+    </RelativeLayout>
+    <com.baidu.mapapi.map.MapView
+        android:id="@+id/id_bmapHeatView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/heat_map_title"
+        android:clickable="true"/>
+</RelativeLayout>

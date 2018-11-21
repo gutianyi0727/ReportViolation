@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.example.elvis.reportviolation.ui.SlidingMenu xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/sliding_menu"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    android:scrollbars="none">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <include layout="@layout/activity_main_menu"/>
+
+        <RelativeLayout
+            android:id="@+id/context"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#ffffff">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:background="#8b5742"
+                android:paddingTop="10dp"
+                android:id="@+id/title_template">
+
+                    <ImageButton
+                        android:id="@+id/show_main_menu"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_marginStart="5dp"
+                        android:layout_centerVertical="true"
+                        android:background="@mipmap/menu"
+                        android:layout_marginLeft="5dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:text="Report Violation"
+                        android:textSize="25dp"
+                        android:textColor="#fff5ee" />
+
+            </RelativeLayout>
+            <GridView
+                android:id="@+id/gridview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="150dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:numColumns="2">
+            </GridView>
+
+
+        </RelativeLayout>
+    </LinearLayout>
+</com.example.elvis.reportviolation.ui.SlidingMenu>
