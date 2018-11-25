@@ -1,5 +1,7 @@
 package com.example.elvis.reportviolation.Activity;
-
+/**
+ * Elvis Gu, May 2018
+ */
 import android.app.Application;
 
 import com.baidu.mapapi.SDKInitializer;
