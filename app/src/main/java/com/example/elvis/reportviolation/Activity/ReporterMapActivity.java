@@ -92,21 +92,13 @@ public class ReporterMapActivity extends AppCompatActivity {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
-                case R.id.navigation_map:
-                    return true;
                 case R.id.navigation_dashboard:
                     Intent intentSendLocation = new Intent(ReporterMapActivity.this,ReportActivity.class);
                     intentSendLocation.putExtra("locationLatitude",locationLatitude);
                     intentSendLocation.putExtra("locationLongitude",locationLongitude);
                     intentSendLocation.putExtra("location_data",locationData);
-                    intentSendLocation.putExtra("ID",theReporterID);
                     startActivity(intentSendLocation);
-                    finish();
                     return true;
-//                case R.id.navigation_map:
-//                    Intent intentHeatMap = new Intent(ReporterMapActivity.this,HeatMap.class);
-//                    startActivity(intentHeatMap);
-//                    return true;
             }
             return false;
         }

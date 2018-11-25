@@ -1,17 +1,14 @@
 package com.example.elvis.reportviolation.Activity;
 
-import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.HorizontalScrollView;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.example.elvis.reportviolation.R;
 import com.example.elvis.reportviolation.bean.MyUser;
-import com.example.elvis.reportviolation.bean.ReporterViolationCase;
+import com.example.elvis.reportviolation.bean.ViolationCase;
 import com.rmondjone.locktableview.LockTableView;
 import com.rmondjone.xrecyclerview.ProgressStyle;
 import com.rmondjone.xrecyclerview.XRecyclerView;
@@ -26,7 +23,7 @@ import cn.bmob.v3.listener.FindListener;
 
 public class ReporterHistoryTable extends BaseActivity {
         private LinearLayout mContentView;
-        private List<ReporterViolationCase> reports;
+        private List<ViolationCase> reports;
         private MyUser myUser;
         ArrayList<ArrayList<String>> mTableDatas;
         ArrayList<String> mfristData;
@@ -49,13 +46,13 @@ public class ReporterHistoryTable extends BaseActivity {
             mfristData.add("Status");
             mTableDatas.add(mfristData);
 
-            BmobQuery<ReporterViolationCase> query = new BmobQuery<ReporterViolationCase>();
+            BmobQuery<ViolationCase> query = new BmobQuery<ViolationCase>();
             myUser = BmobUser.getCurrentUser(MyUser.class);
             String userID = myUser.getObjectId();
             query.addWhereEqualTo("reporter", userID);
-            query.findObjects(new FindListener<ReporterViolationCase>() {
+            query.findObjects(new FindListener<ViolationCase>() {
                 @Override
-                public void done(List<ReporterViolationCase> list, BmobException e) {
+                public void done(List<ViolationCase> list, BmobException e) {
                     if (e == null) {
 //                    Log.e("getReport",list.get(0).getObjectId());
                         for (int i = 0; i < list.size(); i++) {

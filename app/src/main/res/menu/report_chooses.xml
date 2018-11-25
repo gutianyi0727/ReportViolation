@@ -10,10 +10,6 @@
         android:id="@+id/navigation_report"
         android:icon="@drawable/ic_print_black_24dp"
         android:title="Report" />
-    <item
-        android:id="@+id/back_reporttomap"
-        android:icon="@drawable/ic_account_circle_black_24dp"
-        android:title="Back" />
 
 
 

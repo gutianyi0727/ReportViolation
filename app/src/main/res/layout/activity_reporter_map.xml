@@ -11,7 +11,7 @@
         android:layout_height="50dp"
         android:gravity="center_vertical"
         android:padding="10dp"
-        android:background="#ffffff">
+        android:background="#1e4e98">
 
         <ImageView
             android:layout_width="wrap_content"

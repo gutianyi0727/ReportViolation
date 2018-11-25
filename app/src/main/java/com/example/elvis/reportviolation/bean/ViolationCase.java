@@ -7,9 +7,9 @@ import cn.bmob.v3.BmobObject;
 import cn.bmob.v3.datatype.BmobGeoPoint;
 
 /**
- * set up a reporterVioaltion class which is pointed to appUser
+ * set up a reporterVioaltion class which is pointed to Myuser
  * */
-public class ReporterViolationCase extends BmobObject {
+public class ViolationCase extends BmobObject {
 
     private static final long serialVersionUID = 1L;
 

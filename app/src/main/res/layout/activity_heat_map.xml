@@ -3,14 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".HeatMap">
+    android:layout_height="match_parent">
 
     <RelativeLayout
         android:id="@+id/heat_map_title"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="#ffffff">
+        android:background="#1e4e98">
 
 
         <ImageButton

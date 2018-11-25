@@ -3,7 +3,7 @@
     android:id="@+id/sliding_menu"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
+    android:background="@drawable/anulz"
     android:scrollbars="none">
 
     <LinearLayout
@@ -22,7 +22,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:background="#8b5742"
+                android:background="#1e4e98"
                 android:paddingTop="10dp"
                 android:id="@+id/title_template">
 

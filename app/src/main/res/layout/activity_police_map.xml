@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+    android:id="@+id/police_map_title"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:gravity="center_vertical"
+    android:padding="10dp"
+    android:background="#1e4e98">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/last_step"
+        android:onClick="policeMapBackToUserInfor"
+        />
+</RelativeLayout>
+
+    <com.baidu.mapapi.map.MapView
+        android:id="@+id/police_map_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/police_map_title">
+    </com.baidu.mapapi.map.MapView>
+
+</RelativeLayout>

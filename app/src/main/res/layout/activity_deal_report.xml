@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#7adfb8">
+    <RelativeLayout
+        android:id="@+id/police_deal_title"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center_vertical"
+        android:padding="10dp"
+        android:background="#1e4e98">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/last_step"
+        android:onClick="policeDealBackToTrans"
+        />
+    </RelativeLayout>
+
+
+    <github.ishaan.buttonprogressbar.ButtonProgressBar
+        android:id="@+id/bpb_main"
+        android:layout_width="211dp"
+        android:layout_height="70dp"
+        android:layout_marginBottom="356dp"
+        android:background="@drawable/text_yuan"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:text="Deal with violation"
+        app:textColor="@android:color/white"
+        app:type="indeterminate" />
+</android.support.constraint.ConstraintLayout>

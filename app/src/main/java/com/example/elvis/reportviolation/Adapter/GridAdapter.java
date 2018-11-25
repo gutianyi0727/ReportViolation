@@ -28,14 +28,14 @@ public class GridAdapter extends BaseAdapter {
     private List<GridViewBean> gridViewBeen = new ArrayList<>();
 
 
-    public GridAdapter(Context context, Boolean isstudent){
+    public GridAdapter(Context context, Boolean isReporter){
         this.context = context;
-        if (isstudent){
+        if (isReporter){
             images = new int[]{R.drawable.ic_person, R.drawable.ic_report_black,R.drawable.ic_map,R.drawable.ic_history_black_24dp};
             names = new String[]{"个人信息","举报","热力图","历史记录"};
         }else {
-            images = new int[]{R.drawable.ic_person,R.drawable.ic_report_black,R.drawable.ic_map};
-            names = new String[]{"个人信息","数据","发布课程"};
+            images = new int[]{R.drawable.ic_person, R.drawable.ic_report_black,R.drawable.ic_map};
+            names = new String[]{"个人信息","违章地图","热力图"};
         }
         for (int i=0;i<images.length;i++){
             GridViewBean gridViewBean = new GridViewBean();

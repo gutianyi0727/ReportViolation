@@ -54,6 +54,10 @@
         <activity android:name=".Activity.ReportActivity" />
         <activity android:name=".Activity.HeatMap" />
         <activity android:name=".Activity.ReporterHistoryTable" />
+        <activity android:name=".Activity.DealReport" />
+        <activity android:name=".Activity.PoliceMap" />
+        <activity android:name=".Activity.TransferData" />
+
     </application>
 
 </manifest>

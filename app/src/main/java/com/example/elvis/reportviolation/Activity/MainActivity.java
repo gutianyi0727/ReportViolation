@@ -20,7 +20,6 @@ import com.example.elvis.reportviolation.Adapter.GridAdapter;
 import com.example.elvis.reportviolation.R;
 import com.example.elvis.reportviolation.bean.MessageEvent;
 import com.example.elvis.reportviolation.bean.MyUser;
-import com.example.elvis.reportviolation.bean.ReporterViolationCase;
 import com.example.elvis.reportviolation.ui.SlidingMenu;
 import com.example.elvis.reportviolation.util.ToastUtil;
 import com.example.elvis.reportviolation.util.ToolsUtil;
@@ -48,7 +47,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,A
     private ImageButton show_menu;
     private GridView gridView;
 
-    private boolean isStudent;
+    private boolean isReporter;
     private GridAdapter gridAdapter;
     private MyUser myUser;
 
@@ -58,9 +57,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,A
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        isStudent = getIntent().getBooleanExtra("isstudent",true);
         EventBus.getDefault().register(this);
         MyApplication.mMyUser = BmobUser.getCurrentUser(MyUser.class);
+        isReporter = BmobUser.getCurrentUser(MyUser.class).getReporter();
 
         //获取权限
         int permission = ActivityCompat.checkSelfPermission(MainActivity.this,
@@ -108,7 +107,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,A
 
     public void setData() {
         //设置主页图标
-        gridAdapter = new GridAdapter(this,isStudent);
+        gridAdapter = new GridAdapter(this,isReporter);
         gridView.setAdapter(gridAdapter);
         gridView.setOnItemClickListener(this);
 
@@ -136,11 +135,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,A
             case R.id.main_menu_image:
             case R.id.main_menu_name:
                 intent = new Intent(MainActivity.this,UserInfoActivity.class);
-                if (isStudent){
-                    intent.putExtra("isstudent",true);
-                }else {
-                    intent.putExtra("isstudent",false);
-                }
                 startActivity(intent);
                 break;
             case R.id.main_menu_out:
@@ -167,7 +161,11 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,A
                 break;
 
             case 1:
-                intent = new Intent(MainActivity.this,ReporterMapActivity.class);
+                if(isReporter){
+                    intent = new Intent(MainActivity.this,ReporterMapActivity.class);
+                }else{
+                    intent = new Intent(MainActivity.this,TransferData.class);
+                }
                 startActivity(intent);
                 break;
 

@@ -1,16 +1,18 @@
 package com.example.elvis.reportviolation.Activity;
 
-import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,27 +21,35 @@ import com.baidu.ocr.sdk.OnResultListener;
 import com.baidu.ocr.sdk.exception.OCRError;
 import com.baidu.ocr.sdk.model.AccessToken;
 import com.baidu.ocr.ui.camera.CameraActivity;
+import com.bumptech.glide.Glide;
 import com.example.elvis.reportviolation.R;
 import com.example.elvis.reportviolation.Service.RecognizeService;
 import com.example.elvis.reportviolation.bean.MyUser;
-import com.example.elvis.reportviolation.bean.ReporterViolationCase;
+import com.example.elvis.reportviolation.bean.ViolationCase;
 import com.example.elvis.reportviolation.util.FileUtil;
+import com.example.elvis.reportviolation.util.ToastUtil;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import cn.bmob.v3.Bmob;
+import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.datatype.BmobGeoPoint;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.SaveListener;
+import jp.wasabeef.glide.transformations.CropCircleTransformation;
 
-public class ReportActivity extends AppCompatActivity {
+public class ReportActivity extends BaseActivity {
 
     private static final int REQUEST_CODE_LICENSE_PLATE = 122;
 
     private boolean hasGotToken = false;
 
-    private BmobGeoPoint reportLoc;
+    private ImageButton backToMain;
+
+    private MyUser mMyUser;
+    private ImageView pic;
+    private TextView reporter_name;
+
     private String reporterID;
     private double Lat;
     private double Lon;
@@ -49,25 +59,39 @@ public class ReportActivity extends AppCompatActivity {
     private AlertDialog.Builder alertDialog;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_image_recog);
-        Bmob.initialize(this, "f732e2fc958d8b5499561c171d8ca72d");
+        setContentView(R.layout.activity_report_violation);
         //print out location which is from last activity's intent
         Intent intent = getIntent();
-        TextView locationText =(TextView)findViewById(R.id.locationResultText);
+        TextView locationText =(TextView)findViewById(R.id.violation_case_location);
         detailedLoc = intent.getStringExtra("location_data");
         locationText.setText(detailedLoc);
-        reporterID = intent.getStringExtra("ID");
+
+        mMyUser = BmobUser.getCurrentUser(MyUser.class);
+        reporterID = mMyUser.getObjectId();
         Lat = intent.getDoubleExtra("locationLatitude",0.000000000000);
         Lon = intent.getDoubleExtra("locationLongitude",0.000000000000);
-//        Toast.makeText(imageRecog.this, Lat+"", Toast.LENGTH_LONG).show();
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.twoChoose);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         alertDialog = new AlertDialog.Builder(this);
 
         initAccessTokenWithAkSk();
+
+        backToMain = (ImageButton) findViewById(R.id.back_main_user_info);
+        backToMain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+        pic = (ImageView) findViewById(R.id.image_user_avatar);
+        reporter_name = (TextView) findViewById(R.id.reporter_name);
+        reporter_name.setText(mMyUser.getName());
+        Glide.with(this).load(mMyUser.getAvatar().getUrl()).bitmapTransform(new CropCircleTransformation(this)).crossFade(1000).into(pic);
     }
+
 
     //The following code is from Baidu OCR Demo
     private boolean checkTokenStatus() {
@@ -146,7 +170,7 @@ public class ReportActivity extends AppCompatActivity {
                             try {
                                 JSONObject jObject = new JSONObject(result);
                                 number  = (String)jObject.getJSONObject("words_result").get("number");
-                                TextView lblTitle=(TextView)findViewById(R.id.resultText);
+                                TextView lblTitle=(TextView)findViewById(R.id.case_plate_number);
                                 lblTitle.setText(number);
                             } catch (JSONException e) {
                                 e.printStackTrace();
@@ -183,33 +207,25 @@ public class ReportActivity extends AppCompatActivity {
 
                 //click button to send the report
                 case R.id.navigation_report:
-                    MyUser testReporter1 = new MyUser();
                     BmobGeoPoint point = new BmobGeoPoint(Lon,Lat);
-                    testReporter1.setObjectId(reporterID);
-                    ReporterViolationCase testReport = new ReporterViolationCase();
+                    ViolationCase testReport = new ViolationCase();
                     testReport.setLLlocation(point);
                     testReport.setDelatedLoc(detailedLoc);
                     testReport.setPlateNumber(number);
-                    testReport.setReporter(testReporter1);
+                    testReport.setReporter(BmobUser.getCurrentUser(MyUser.class));
                     testReport.setDealt(false);
-                    EditText ET=(EditText) findViewById(R.id.shortDescription);
+                    EditText ET=(EditText) findViewById(R.id.violation_case_type);
                     testReport.setReportTitleandType(ET.getText().toString());
                     testReport.save(new SaveListener<String>() {
                         @Override
                         public void done(String s, BmobException e) {
                             if(e==null){
-                                Toast.makeText(ReportActivity.this,"success Send",Toast.LENGTH_LONG).show();
+                                ToastUtil.showText(ReportActivity.this,"success Send");
+                            }else{
+                                ToastUtil.showText(ReportActivity.this,"创建数据失败：" + e.getMessage());
                             }
                         }
                     });
-                    return true;
-
-                //click th button to return back the reporter's map
-                case R.id.back_reporttomap:
-                    Intent intentRtM = new Intent(ReportActivity.this, MainActivity.class);
-                    intentRtM.putExtra("useID",reporterID);
-                    startActivity(intentRtM);
-                    finish();
                     return true;
             }
             return false;
